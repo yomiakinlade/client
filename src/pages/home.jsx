@@ -28,15 +28,15 @@ function Home() {
     <Box
       display="flex"
       flexDirection="column"
-      m={{
-        xs: 1,
-        sm: 2,
-        md: 2,
-        lg: 5,
-      }}
+      alignItems="center"
+      justifyContent="center"
       width="100%"
-      maxWidth={1400}
+      // Apply a maximum width for the entire site content
+      maxWidth="1400px"
+      // Automatically add margins to center the content
       margin="auto"
+      // Add padding or margin as needed for small to large screens
+      p={{ xs: 1, sm: 2, md: 4, lg: 5 }}
     >
       <Box
         display="flex"
