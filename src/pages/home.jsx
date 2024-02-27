@@ -25,7 +25,19 @@ function Home() {
   } = useAppraisalConversationGridState();
 
   return (
-    <Box display="flex" flexDirection="column" m={3} width="100%">
+    <Box
+      display="flex"
+      flexDirection="column"
+      m={{
+        xs: 1,
+        sm: 2,
+        md: 2,
+        lg: 5,
+      }}
+      width="100%"
+      maxWidth={1400}
+      margin="auto"
+    >
       <Box
         display="flex"
         flexDirection="row"

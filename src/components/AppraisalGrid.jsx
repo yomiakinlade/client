@@ -59,16 +59,16 @@ function AppraisalGrid({
         </GridLayout>
       </Box>
       {/* Conditionally render the image based on screen size */}
-      {matchesMdUp && (
-        <img
-          src={rightLegend}
-          alt=""
-          height={gridWidth} // Ensure the image height matches the grid height
-          style={{
-            marginLeft: "10px",
-          }}
-        />
-      )}
+      {/* {matchesMdUp && ( */}
+      <img
+        src={rightLegend}
+        alt=""
+        height={gridWidth} // Ensure the image height matches the grid height
+        style={{
+          marginLeft: "10px",
+        }}
+      />
+      {/* )} */}
     </Box>
   );
 }
