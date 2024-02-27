@@ -4,27 +4,25 @@ import "./home.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import logo from "../assets/images/logo.png";
-import FlexBetween from "../components/flexbetween";
 import AppraisalGrid from "../components/AppraisalGrid";
 import TextFields from "../components/TextFields";
 import ResultsFields from "../components/ResultsFields";
+import useAppraisalConversationGridState from "../hooks/useAppraisalConversationGridState";
 
 function Home() {
-  const [appraiseePosition, setAppraiseePosition] = useState(null);
-  const [appraiserPosition, setAppraiserPosition] = useState(null);
-  const [targetPosition, setTargetPosition] = useState(null);
-
-  const handleItemClick = (item) => {
-    if (!appraiseePosition) {
-      setAppraiseePosition(item);
-    } else if (!appraiserPosition) {
-      setAppraiserPosition(item);
-    } else if (!targetPosition) {
-      setTargetPosition(item);
-    } else {
-      // Reset or further logic for additional selections
-    }
-  };
+  const {
+    appraiseePosition,
+    appraiserPosition,
+    targetPosition,
+    handleItemClick,
+    setAppraiseePosition,
+    setAppraiserPosition,
+    setTargetPosition,
+    gridWidth,
+    layout,
+    matchesMdUp,
+    matchesSmDown,
+  } = useAppraisalConversationGridState();
 
   return (
     <Box display="flex" flexDirection="column" m={3} width="100%">
@@ -38,7 +36,12 @@ function Home() {
         width={"100%"}
       >
         <img src={logo} alt="" style={{ width: "100px", height: "100px" }} />
-        <Typography variant="h4" fontWeight={800} color="darkslategrey" mr={6}>
+        <Typography
+          variant={matchesMdUp ? "h4" : "h5"}
+          fontWeight={800}
+          color="darkslategrey"
+          mr={6}
+        >
           Active Learning Trust Appraisal Conversation Grid
         </Typography>
       </Box>
@@ -56,6 +59,10 @@ function Home() {
           appraiserPosition={appraiserPosition}
           targetPosition={targetPosition}
           handleItemClick={handleItemClick}
+          gridWidth={gridWidth}
+          layout={layout}
+          matchesMdUp={matchesMdUp}
+          matchesSmDown={matchesSmDown}
         />
         <Box
           display="flex"
