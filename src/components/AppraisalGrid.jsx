@@ -20,7 +20,7 @@ function AppraisalGrid({
   return (
     <Box
       sx={{
-        width: 800, // Match the GridLayout width
+        width: 600, // Match the GridLayout width
         height: 600, // Match the GridLayout height (rowHeight * numberOfRows)
         background: "linear-gradient(to top right, red, lightgreen)",
       }}
@@ -30,7 +30,7 @@ function AppraisalGrid({
         layout={layout}
         cols={10}
         rowHeight={60}
-        width={800}
+        width={600}
         margin={[0, 0]}
         isDraggable={false}
         isResizable={false}
