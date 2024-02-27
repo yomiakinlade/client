@@ -1,0 +1,21 @@
+/* Home.css */
+.grid-item {
+  border: 1px solid #ddd;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CSS classes for different selections */
+.grid-item.appraisee {
+  background-color: lightblue;
+}
+
+.grid-item.appraiser {
+  background-color: lightgreen;
+}
+
+.grid-item.target {
+  background-color: lightcoral;
+}
