@@ -16,6 +16,7 @@ function ResultsFields({
       flexDirection="column"
       gap={2}
       width="100%"
+      // mx={1}
     >
       {/* Appraisee Position */}
       <Box

@@ -17,11 +17,13 @@ function AppraisalGrid({
     }
   }
 
+  const gridWidth = 750;
+
   return (
     <Box
       sx={{
-        width: 600, // Match the GridLayout width
-        height: 600, // Match the GridLayout height (rowHeight * numberOfRows)
+        width: gridWidth, // Match the GridLayout width
+        height: gridWidth, // Match the GridLayout height (rowHeight * numberOfRows)
         background: "linear-gradient(to top right, red, lightgreen)",
       }}
     >
@@ -29,8 +31,8 @@ function AppraisalGrid({
         className="layout"
         layout={layout}
         cols={10}
-        rowHeight={60}
-        width={600}
+        rowHeight={gridWidth / 10}
+        width={gridWidth}
         margin={[0, 0]}
         isDraggable={false}
         isResizable={false}

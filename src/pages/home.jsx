@@ -27,7 +27,7 @@ function Home() {
   };
 
   return (
-    <Box display="flex" flexDirection="column" height="100vh" m={3}>
+    <Box display="flex" flexDirection="column" m={3} width="100%">
       <Box
         display="flex"
         flexDirection="row"
@@ -35,14 +35,22 @@ function Home() {
         // justifyContent="center"
         marginBottom="20px"
         gap={5}
+        width={"100%"}
       >
-        <img src={logo} alt="" />
-        <Typography variant="h4" fontWeight={800} color="darkslategrey">
+        <img src={logo} alt="" style={{ width: "100px", height: "100px" }} />
+        <Typography variant="h4" fontWeight={800} color="darkslategrey" mr={6}>
           Active Learning Trust Appraisal Conversation Grid
         </Typography>
       </Box>
 
-      <FlexBetween>
+      <Box
+        // if a small screen the flex direction will be column
+        display="flex"
+        flexDirection={{ xs: "column", sm: "column", md: "column", lg: "row" }}
+        justifyContent="space-between"
+        height="100%"
+        width="100%"
+      >
         <AppraisalGrid
           appraiseePosition={appraiseePosition}
           appraiserPosition={appraiserPosition}
@@ -52,10 +60,22 @@ function Home() {
         <Box
           display="flex"
           flexDirection="column"
-          justifyContent="space-between"
-          height="100%"
+          justifyContent={{
+            xs: "flex-start",
+            sm: "flex-start",
+            md: "flex-start",
+            lg: "space-between",
+          }}
+          height="750px"
           width="100%"
           maxWidth="400px"
+          mr={6}
+          gap={{
+            xs: 3,
+            sm: 3,
+            md: 3,
+            lg: 0,
+          }}
         >
           <TextFields />
           <ResultsFields
@@ -67,7 +87,7 @@ function Home() {
             setTargetPosition={setTargetPosition}
           />
         </Box>
-      </FlexBetween>
+      </Box>
     </Box>
   );
 }
