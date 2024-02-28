@@ -1,7 +1,8 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import GridLayout from "react-grid-layout";
 import rightLegend from "../assets/images/rightLegend2.png";
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 function AppraisalGrid({
   appraiseePosition,
@@ -17,8 +18,8 @@ function AppraisalGrid({
     <Box display="flex" flexDirection="row">
       <Box
         sx={{
-          width: gridWidth, // Dynamically set based on screen size
-          height: gridWidth, // Keep the grid square
+          width: gridWidth,
+          height: gridWidth,
           background: "linear-gradient(to top right, red, lightgreen)",
         }}
       >
@@ -26,7 +27,7 @@ function AppraisalGrid({
           className="layout"
           layout={layout}
           cols={10}
-          rowHeight={gridWidth / 10} // Adjust rowHeight based on the dynamic gridWidth
+          rowHeight={gridWidth / 10}
           width={gridWidth}
           margin={[0, 0]}
           isDraggable={false}
@@ -49,26 +50,56 @@ function AppraisalGrid({
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                position: "relative",
               }}
               onClick={() => handleItemClick(item.i)}
             >
-              {/* Optionally, display the item identifier */}
-              {/* <Typography variant="caption">{item.i}</Typography> */}
+              <FiberManualRecordIcon
+                sx={{
+                  color:
+                    item.i === appraiseePosition
+                      ? "lightblue"
+                      : item.i === appraiserPosition
+                      ? "lightgreen"
+                      : item.i === targetPosition
+                      ? "lightcoral"
+                      : "transparent", // Use "transparent" to hide icons not matching positions
+                  fontSize: 100,
+                }}
+              />
+              {/* Only display text for specific positions */}
+              {item.i === appraiseePosition ||
+              item.i === appraiserPosition ||
+              item.i === targetPosition ? (
+                <Typography
+                  variant="caption"
+                  sx={{
+                    position: "absolute",
+                    // color: "white",
+                    fontWeight: 800,
+                  }}
+                >
+                  {item.i === appraiseePosition
+                    ? "Appraisee"
+                    : item.i === appraiserPosition
+                    ? "Appraiser"
+                    : item.i === targetPosition
+                    ? "Goal"
+                    : ""}
+                </Typography>
+              ) : null}
             </Box>
           ))}
         </GridLayout>
       </Box>
-      {/* Conditionally render the image based on screen size */}
-      {/* {matchesMdUp && ( */}
       <img
         src={rightLegend}
         alt=""
-        height={gridWidth} // Ensure the image height matches the grid height
+        height={gridWidth}
         style={{
           marginLeft: "10px",
         }}
       />
-      {/* )} */}
     </Box>
   );
 }
