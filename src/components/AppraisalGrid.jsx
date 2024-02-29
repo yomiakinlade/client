@@ -64,7 +64,12 @@ function AppraisalGrid({
                       : item.i === targetPosition
                       ? "lightcoral"
                       : "transparent", // Use "transparent" to hide icons not matching positions
-                  fontSize: 100,
+                  fontSize: {
+                    xs: "40px",
+                    sm: "50px",
+                    md: "75px",
+                    lg: "100px",
+                  },
                 }}
               />
               {/* Only display text for specific positions */}
@@ -77,6 +82,12 @@ function AppraisalGrid({
                     position: "absolute",
                     // color: "white",
                     fontWeight: 800,
+                  }}
+                  fontSize={{
+                    xs: "10px",
+                    sm: "11px",
+                    md: "12px",
+                    lg: "13px",
                   }}
                 >
                   {item.i === appraiseePosition
