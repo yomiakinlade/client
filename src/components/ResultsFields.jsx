@@ -35,7 +35,7 @@ function ResultsFields({
           width={200} // Adjust based on your design needs
           textAlign="left"
         >
-          Appraisee Position:
+          Appraisee Score:
         </Typography>
         <Typography flexGrow={1} textAlign="center">
           {appraiseePosition?.toUpperCase()}
@@ -66,7 +66,7 @@ function ResultsFields({
           width={200} // Adjust based on your design needs
           textAlign="left"
         >
-          Appraiser Position:
+          Appraiser Score:
         </Typography>
         <Typography flexGrow={1} textAlign="center">
           {appraiserPosition?.toUpperCase()}
@@ -97,7 +97,7 @@ function ResultsFields({
           width={200} // Adjust based on your design needs
           textAlign="left"
         >
-          Agreed Target Position:
+          Target / Goal Score:
         </Typography>
         <Typography flexGrow={1} textAlign="center">
           {targetPosition?.toUpperCase()}

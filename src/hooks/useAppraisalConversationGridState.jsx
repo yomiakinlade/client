@@ -9,7 +9,7 @@ const useAppraisalConversationGridState = () => {
   const matchesSmDown = useMediaQuery(theme.breakpoints.down("sm"));
 
   // Adjust gridWidth based on screen size with an additional condition for small screens
-  const gridWidth = matchesMdUp ? 750 : matchesSmDown ? 325 : 500; // 750px for md and up, 300px for sm and down, 500px for in-between
+  const gridWidth = matchesMdUp ? 700 : matchesSmDown ? 300 : 450; // 750px for md and up, 300px for sm and down, 500px for in-between
   const [appraiseePosition, setAppraiseePosition] = useState(null);
   const [appraiserPosition, setAppraiserPosition] = useState(null);
   const [targetPosition, setTargetPosition] = useState(null);
