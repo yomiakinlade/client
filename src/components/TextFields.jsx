@@ -1,13 +1,13 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
 
-// Reusable InputField component
-const InputField = ({ label, placeholder }) => (
+// Modified InputField component to accept inputType
+const InputField = ({ label, placeholder, inputType = "text" }) => (
   <Box
     display="flex"
     alignItems="center"
     justifyContent="center"
-    gap={1} // Adjusted gap to accommodate the separator
+    gap={1}
     marginTop="20px"
     backgroundColor="#f0f0f0"
     border="1px solid darkslategrey"
@@ -24,19 +24,15 @@ const InputField = ({ label, placeholder }) => (
       {label}:
     </Typography>
     {/* Vertical Separator */}
-    <Box
-      width="2px" // Width of the separator
-      height="24px" // Adjust height according to your needs
-      bgcolor="darkslategrey" // Color of the separator
-    />
+    <Box width="2px" height="24px" bgcolor="darkslategrey" />
     <input
-      type="text"
+      type={inputType} // Use inputType prop here
       placeholder={placeholder}
       style={{
         padding: "5px",
         border: "none",
         backgroundColor: "transparent",
-        flexGrow: 1, // Ensure input takes up remaining space
+        flexGrow: 1,
       }}
     />
   </Box>
@@ -44,10 +40,20 @@ const InputField = ({ label, placeholder }) => (
 
 function TextFields() {
   const fields = [
-    { label: "Appraisee", placeholder: "Enter Appraisee Name" },
-    { label: "Appraiser", placeholder: "Enter Appraiser Name" },
-    { label: "Role", placeholder: "Enter Role" },
-    { label: "Base / School", placeholder: "Enter Name" },
+    {
+      label: "Appraisee",
+      placeholder: "Enter Appraisee Name",
+      inputType: "text",
+    },
+    {
+      label: "Appraiser",
+      placeholder: "Enter Appraiser Name",
+      inputType: "text",
+    },
+    { label: "Role", placeholder: "Enter Role", inputType: "text" },
+    { label: "Base / School", placeholder: "Enter Name", inputType: "text" },
+    // Added new date field
+    { label: "Appraisal Date", placeholder: "Select Date", inputType: "date" },
   ];
 
   return (
@@ -57,6 +63,7 @@ function TextFields() {
           key={index}
           label={field.label}
           placeholder={field.placeholder}
+          inputType={field.inputType} // Pass inputType to InputField
         />
       ))}
     </Box>
