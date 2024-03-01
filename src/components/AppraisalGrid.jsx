@@ -71,7 +71,12 @@ function AppraisalGrid({
                     <FiberManualRecordIcon
                       sx={{
                         color: "lightblue",
-                        fontSize: "100px",
+                        fontSize: {
+                          xs: "90px",
+                          sm: "100px",
+                          md: "110px",
+                          lg: "120px",
+                        },
                         position: "absolute",
                         zIndex: 1,
                       }}
@@ -100,7 +105,12 @@ function AppraisalGrid({
                     <FiberManualRecordIcon
                       sx={{
                         color: "lightgreen",
-                        fontSize: "75px",
+                        fontSize: {
+                          xs: "75px",
+                          sm: "80px",
+                          md: "90px",
+                          lg: "100px",
+                        },
                         position: "absolute",
                         zIndex: 2,
                       }}
@@ -129,7 +139,12 @@ function AppraisalGrid({
                     <FiberManualRecordIcon
                       sx={{
                         color: "lightcoral",
-                        fontSize: "50px",
+                        fontSize: {
+                          xs: "60px",
+                          sm: "65px",
+                          md: "70px",
+                          lg: "75px",
+                        },
                         position: "absolute",
                         zIndex: 3,
                       }}
