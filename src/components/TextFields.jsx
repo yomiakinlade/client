@@ -53,6 +53,8 @@ const InputField = ({
           padding: "0 10px",
           border: "none",
           backgroundColor: "transparent",
+          height: "40px",
+          alignItems: "center",
         }}
         renderValue={(selected) => (!selected ? placeholder : selected)}
       >

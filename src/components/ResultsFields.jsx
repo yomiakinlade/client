@@ -27,6 +27,7 @@ function ResultsFields({
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
+        height="20px"
       >
         <Typography
           fontWeight={800}
@@ -58,6 +59,7 @@ function ResultsFields({
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
+        height="20px"
       >
         <Typography
           fontWeight={800}
@@ -89,6 +91,7 @@ function ResultsFields({
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
+        height="20px"
       >
         <Typography
           fontWeight={800}
