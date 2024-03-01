@@ -4,6 +4,7 @@ import GridLayout from "react-grid-layout";
 import rightLegend from "../assets/images/rightLegend.png";
 import leftLegend from "../assets/images/leftLegend.png";
 import bottomLegend from "../assets/images/bottomLegend.png";
+import AppraisalMap from "../assets/images/AppraisalMap.png";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 
 function AppraisalGrid({
@@ -35,9 +36,22 @@ function AppraisalGrid({
           sx={{
             width: gridWidth,
             height: gridWidth,
-            background: "linear-gradient(to top right, red, lightgreen)",
+            // background: "linear-gradient(to top right, red, lightgreen)",
+            position: "relative",
           }}
         >
+          {/* Add the AppraisalGrid image */}
+          <img
+            src={AppraisalMap}
+            alt="Appraisal Grid"
+            style={{
+              width: "100%",
+              height: "100%",
+              position: "absolute", // Position it absolutely to cover the entire Box area
+              top: 0,
+              left: 0,
+            }}
+          />
           <GridLayout
             className="layout"
             layout={layout}
