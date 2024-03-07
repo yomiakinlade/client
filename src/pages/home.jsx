@@ -54,7 +54,7 @@ function Home() {
           color="darkslategrey"
           mr={6}
         >
-          Active Learning Trust Appraisal Conversation Grid
+          Active Learning Trust Appraisal Map
         </Typography>
       </Box>
 
