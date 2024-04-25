@@ -50,6 +50,9 @@ function Home() {
       margin="auto"
       // Add padding or margin as needed for small to large screens
       p={{ xs: 1, sm: 2, md: 4, lg: 4 }}
+      sx={{
+        backgroundColor: "white",
+      }}
     >
       <Box
         // if a small screen the flex direction will be column

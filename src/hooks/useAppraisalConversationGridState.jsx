@@ -1,6 +1,7 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import { useState } from "react";
-import html2canvas from "html2canvas";
+// import html2canvas from "html2canvas";
+import * as htmlToImage from "html-to-image";
 import * as XLSX from "xlsx";
 import moment from "moment";
 
@@ -145,15 +146,19 @@ const useAppraisalConversationGridState = () => {
   }-${moment().format("YYYY-MM-DD")}`;
 
   const downloadScreenshot = () => {
-    html2canvas(document.body).then((canvas) => {
-      const image = canvas.toDataURL("image/jpg");
-      const link = document.createElement("a");
-      link.href = image;
-      link.download = `${fileName}.jpg`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    });
+    htmlToImage
+      .toJpeg(document.body, { quality: 0.95 })
+      .then((dataUrl) => {
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = `${fileName}.jpeg`; // Changed to JPEG for better quality
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch((error) => {
+        console.error("Could not generate image", error);
+      });
   };
 
   const exportToSpreadsheet = (data) => {
