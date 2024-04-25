@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import "./home.css";
 import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
@@ -22,6 +22,19 @@ function Home() {
     layout,
     matchesMdUp,
     matchesSmDown,
+    secondAppraiseePosition,
+    setSecondAppraiseePosition,
+    secondAppraiserPosition,
+    setSecondAppraiserPosition,
+    secondTargetPosition,
+    setSecondTargetPosition,
+    textFieldValues,
+    values,
+    handleChange,
+    fields,
+    resetAll,
+    downloadScreenshot,
+    handleExport,
   } = useAppraisalConversationGridState();
 
   return (
@@ -36,26 +49,48 @@ function Home() {
       // Automatically add margins to center the content
       margin="auto"
       // Add padding or margin as needed for small to large screens
-      p={{ xs: 1, sm: 2, md: 4, lg: 5 }}
+      p={{ xs: 1, sm: 2, md: 4, lg: 4 }}
     >
       <Box
+        // if a small screen the flex direction will be column
         display="flex"
-        flexDirection="row"
-        alignItems="center"
-        // justifyContent="center"
-        marginBottom="20px"
-        gap={5}
-        width={"100%"}
+        flexDirection={{ xs: "column", sm: "column", md: "column", lg: "row" }}
+        justifyContent="space-between"
+        mb={2}
       >
-        <img src={logo} alt="" style={{ width: "100px", height: "100px" }} />
-        <Typography
-          variant={matchesMdUp ? "h4" : "h5"}
-          fontWeight={800}
-          color="darkslategrey"
-          mr={6}
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          // justifyContent="center"
+          marginBottom="20px"
+          gap={4}
+          width={"100%"}
         >
-          Active Learning Trust Appraisal Map
-        </Typography>
+          <img src={logo} alt="" style={{ width: "100px", height: "100px" }} />
+          <Typography
+            variant={matchesMdUp ? "h4" : "h5"}
+            fontWeight={800}
+            color="darkslategrey"
+            mr={6}
+          >
+            Active Learning Trust Appraisal Map
+          </Typography>
+        </Box>
+        <Box
+          display="flex"
+          flexDirection="row"
+          alignItems="center"
+          justifyContent="center"
+          gap={2}
+        >
+          <Button onClick={downloadScreenshot} variant="contained">
+            Download Screenshot
+          </Button>
+          <Button onClick={handleExport} variant="contained">
+            Export Data
+          </Button>
+        </Box>
       </Box>
 
       <Box
@@ -70,6 +105,9 @@ function Home() {
           appraiseePosition={appraiseePosition}
           appraiserPosition={appraiserPosition}
           targetPosition={targetPosition}
+          secondAppraiseePosition={secondAppraiseePosition}
+          secondAppraiserPosition={secondAppraiserPosition}
+          secondTargetPosition={secondTargetPosition}
           handleItemClick={handleItemClick}
           gridWidth={gridWidth}
           layout={layout}
@@ -83,7 +121,7 @@ function Home() {
             xs: "flex-start",
             sm: "flex-start",
             md: "flex-start",
-            lg: "space-between",
+            lg: "flex-start",
           }}
           height="750px"
           width="100%"
@@ -93,20 +131,43 @@ function Home() {
             xs: 3,
             sm: 3,
             md: 3,
-            lg: 0,
+            lg: 3,
           }}
         >
-          <TextFields />
-          <ResultsFields
-            appraiseePosition={appraiseePosition}
-            appraiserPosition={appraiserPosition}
-            targetPosition={targetPosition}
-            setAppraiseePosition={setAppraiseePosition}
-            setAppraiserPosition={setAppraiserPosition}
-            setTargetPosition={setTargetPosition}
+          <TextFields
+            values={values}
+            handleChange={handleChange}
+            fields={fields}
           />
+          {textFieldValues.role && (
+            <ResultsFields
+              name={textFieldValues.reviewType}
+              roleSelected={textFieldValues.role}
+              appraiseePosition={appraiseePosition}
+              appraiserPosition={appraiserPosition}
+              targetPosition={targetPosition}
+              setAppraiseePosition={setAppraiseePosition}
+              setAppraiserPosition={setAppraiserPosition}
+              setTargetPosition={setTargetPosition}
+            />
+          )}
+          {textFieldValues.secondRole && (
+            <ResultsFields
+              name={textFieldValues.reviewType}
+              roleSelected={textFieldValues.secondRole}
+              appraiseePosition={secondAppraiseePosition}
+              appraiserPosition={secondAppraiserPosition}
+              targetPosition={secondTargetPosition}
+              setAppraiseePosition={setSecondAppraiseePosition}
+              setAppraiserPosition={setSecondAppraiserPosition}
+              setTargetPosition={setSecondTargetPosition}
+            />
+          )}
         </Box>
       </Box>
+      <Button onClick={resetAll} variant="contained">
+        Reset All
+      </Button>
     </Box>
   );
 }

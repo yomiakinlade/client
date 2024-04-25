@@ -2,6 +2,8 @@ import React from "react";
 import { Box, Button, Typography } from "@mui/material";
 
 function ResultsFields({
+  name,
+  roleSelected,
   appraiseePosition,
   appraiserPosition,
   targetPosition,
@@ -10,31 +12,28 @@ function ResultsFields({
   setTargetPosition,
 }) {
   return (
-    <Box
-      // padding="20px"
-      display="flex"
-      flexDirection="column"
-      gap={2}
-      width="100%"
-      // mx={1}
-    >
+    <Box display="flex" flexDirection="column" gap={1.5} width="100%">
+      <Typography variant={"h6"}>
+        {name} - {roleSelected}
+      </Typography>
       {/* Appraisee Position */}
       <Box
         display="flex"
         alignItems="center"
         gap={1}
-        padding="10px"
+        padding="5px"
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
         height="20px"
       >
         <Typography
-          fontWeight={800}
+          fontWeight={500}
           color="darkslategrey"
           flexShrink={0}
           width={200} // Adjust based on your design needs
           textAlign="left"
+          fontSize={14}
         >
           Appraisee Score:
         </Typography>
@@ -45,6 +44,9 @@ function ResultsFields({
           onClick={() => setAppraiseePosition(null)}
           variant="contained"
           size="small"
+          sx={{
+            fontSize: "10px",
+          }}
         >
           Reset
         </Button>
@@ -55,18 +57,19 @@ function ResultsFields({
         display="flex"
         alignItems="center"
         gap={1}
-        padding="10px"
+        padding="5px"
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
         height="20px"
       >
         <Typography
-          fontWeight={800}
+          fontWeight={500}
           color="darkslategrey"
           flexShrink={0}
           width={200} // Adjust based on your design needs
           textAlign="left"
+          fontSize={14}
         >
           Appraiser Score:
         </Typography>
@@ -77,6 +80,9 @@ function ResultsFields({
           onClick={() => setAppraiserPosition(null)}
           variant="contained"
           size="small"
+          sx={{
+            fontSize: "10px",
+          }}
         >
           Reset
         </Button>
@@ -87,18 +93,19 @@ function ResultsFields({
         display="flex"
         alignItems="center"
         gap={1}
-        padding="10px"
+        padding="5px"
         backgroundColor="#f0f0f0"
         border="1px solid darkslategrey"
         borderRadius="5px"
         height="20px"
       >
         <Typography
-          fontWeight={800}
+          fontWeight={500}
           color="darkslategrey"
           flexShrink={0}
           width={200} // Adjust based on your design needs
           textAlign="left"
+          fontSize={14}
         >
           Target / Goal Score:
         </Typography>
@@ -109,6 +116,9 @@ function ResultsFields({
           onClick={() => setTargetPosition(null)}
           variant="contained"
           size="small"
+          sx={{
+            fontSize: "10px",
+          }}
         >
           Reset
         </Button>
@@ -116,7 +126,7 @@ function ResultsFields({
 
       {/* Reset All Button */}
       {appraiseePosition && appraiserPosition && targetPosition ? (
-        <Box display="flex" justifyContent="center" marginTop="10px">
+        <Box display="flex" justifyContent="center">
           <Button
             onClick={() => {
               setAppraiseePosition(null);
@@ -126,7 +136,7 @@ function ResultsFields({
             variant="contained"
             size="small"
           >
-            Reset All
+            Reset - {roleSelected} {name}
           </Button>
         </Box>
       ) : null}

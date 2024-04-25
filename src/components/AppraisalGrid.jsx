@@ -6,22 +6,39 @@ import leftLegend from "../assets/images/leftLegend.png";
 import bottomLegend from "../assets/images/bottomLegend.png";
 import AppraisalMap from "../assets/images/AppraisalMap.png";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
+import SquareIcon from "@mui/icons-material/Square";
 
 function AppraisalGrid({
   appraiseePosition,
   appraiserPosition,
   targetPosition,
+  secondAppraiseePosition,
+  secondAppraiserPosition,
+  secondTargetPosition,
   handleItemClick,
   gridWidth,
   layout,
-  matchesMdUp,
-  matchesSmDown,
 }) {
   // Determine if text for each role should be displayed based on overlap
+  const showSecondAppraiseeText =
+    secondAppraiseePosition !== targetPosition &&
+    secondAppraiseePosition !== secondTargetPosition &&
+    secondAppraiseePosition !== appraiserPosition &&
+    secondAppraiseePosition !== secondAppraiserPosition &&
+    secondAppraiseePosition !== appraiseePosition;
   const showAppraiseeText =
+    appraiseePosition !== targetPosition &&
+    appraiseePosition !== secondTargetPosition &&
     appraiseePosition !== appraiserPosition &&
-    appraiseePosition !== targetPosition;
-  const showAppraiserText = appraiserPosition !== targetPosition;
+    appraiseePosition !== secondAppraiserPosition;
+  const showSecondAppraiserText =
+    secondAppraiserPosition !== targetPosition &&
+    secondAppraiserPosition !== secondTargetPosition &&
+    secondAppraiserPosition !== appraiseePosition;
+  const showAppraiserText =
+    appraiserPosition !== targetPosition &&
+    appraiserPosition !== secondTargetPosition;
+  const showSecondTargetText = secondTargetPosition !== targetPosition;
 
   return (
     <Box display="flex" flexDirection="row">
@@ -84,7 +101,119 @@ function AppraisalGrid({
                   <>
                     <FiberManualRecordIcon
                       sx={{
-                        color: "lightblue",
+                        color:
+                          appraiseePosition === secondAppraiseePosition
+                            ? "#4dcfff"
+                            : "#00B0F0",
+                        fontSize: {
+                          xs: "90px",
+                          sm: "100px",
+                          md: "110px",
+                          lg: "120px",
+                        },
+                        position: "absolute",
+                        zIndex: 2,
+                      }}
+                    />
+                    {showAppraiseeText && (
+                      <Typography
+                        color="white"
+                        fontSize={{
+                          xs: "10px",
+                          sm: "11px",
+                          md: "12px",
+                          lg: "14px",
+                        }}
+                        sx={{
+                          position: "absolute",
+                          zIndex: 3,
+                        }}
+                      >
+                        Appraisee
+                      </Typography>
+                    )}
+                  </>
+                )}
+                {/* Appraiser Icon and Conditional Text */}
+                {item.i === appraiserPosition && (
+                  <>
+                    <FiberManualRecordIcon
+                      sx={{
+                        color:
+                          appraiserPosition === secondAppraiserPosition
+                            ? "#1a9fff"
+                            : "#0070C0",
+                        fontSize: {
+                          xs: "75px",
+                          sm: "80px",
+                          md: "90px",
+                          lg: "100px",
+                        },
+                        position: "absolute",
+                        zIndex: 4,
+                      }}
+                    />
+                    {showAppraiserText && (
+                      <Typography
+                        color="white"
+                        fontSize={{
+                          xs: "10px",
+                          sm: "11px",
+                          md: "12px",
+                          lg: "14px",
+                        }}
+                        sx={{
+                          position: "absolute",
+                          zIndex: 5,
+                        }}
+                      >
+                        Appraiser
+                      </Typography>
+                    )}
+                  </>
+                )}
+                {/* Target Icon and Text (always shown since it's on top) */}
+                {item.i === targetPosition && (
+                  <>
+                    <FiberManualRecordIcon
+                      sx={{
+                        color:
+                          targetPosition === secondTargetPosition
+                            ? "#ad76d6"
+                            : "#7030A0",
+                        fontSize: {
+                          xs: "60px",
+                          sm: "65px",
+                          md: "70px",
+                          lg: "75px",
+                        },
+                        position: "absolute",
+                        zIndex: 6,
+                      }}
+                    />
+                    <Typography
+                      color="white"
+                      fontSize={{
+                        xs: "10px",
+                        sm: "11px",
+                        md: "12px",
+                        lg: "14px",
+                      }}
+                      sx={{
+                        position: "absolute",
+                        zIndex: 7,
+                      }}
+                    >
+                      Goal
+                    </Typography>
+                  </>
+                )}
+                {/* Second Appraisee Icon and Conditional Text */}
+                {item.i === secondAppraiseePosition && (
+                  <>
+                    <SquareIcon
+                      sx={{
+                        color: "#00B0F0",
                         fontSize: {
                           xs: "90px",
                           sm: "100px",
@@ -95,8 +224,10 @@ function AppraisalGrid({
                         zIndex: 1,
                       }}
                     />
-                    {showAppraiseeText && (
+
+                    {showSecondAppraiseeText && (
                       <Typography
+                        color="white"
                         fontSize={{
                           xs: "10px",
                           sm: "11px",
@@ -113,12 +244,12 @@ function AppraisalGrid({
                     )}
                   </>
                 )}
-                {/* Appraiser Icon and Conditional Text */}
-                {item.i === appraiserPosition && (
+                {/* Second Appraiser Icon and Conditional Text */}
+                {item.i === secondAppraiserPosition && (
                   <>
-                    <FiberManualRecordIcon
+                    <SquareIcon
                       sx={{
-                        color: "lightgreen",
+                        color: "#0070C0",
                         fontSize: {
                           xs: "75px",
                           sm: "80px",
@@ -126,11 +257,13 @@ function AppraisalGrid({
                           lg: "100px",
                         },
                         position: "absolute",
-                        zIndex: 2,
+                        zIndex: 3,
                       }}
                     />
-                    {showAppraiserText && (
+
+                    {showSecondAppraiserText && (
                       <Typography
+                        color="white"
                         fontSize={{
                           xs: "10px",
                           sm: "11px",
@@ -139,7 +272,7 @@ function AppraisalGrid({
                         }}
                         sx={{
                           position: "absolute",
-                          zIndex: 3,
+                          zIndex: 4,
                         }}
                       >
                         Appraiser
@@ -147,12 +280,12 @@ function AppraisalGrid({
                     )}
                   </>
                 )}
-                {/* Target Icon and Text (always shown since it's on top) */}
-                {item.i === targetPosition && (
+                {/* Second Target Icon and Text (always shown since it's on top) */}
+                {item.i === secondTargetPosition && (
                   <>
-                    <FiberManualRecordIcon
+                    <SquareIcon
                       sx={{
-                        color: "lightcoral",
+                        color: "#7030A0",
                         fontSize: {
                           xs: "60px",
                           sm: "65px",
@@ -160,23 +293,27 @@ function AppraisalGrid({
                           lg: "75px",
                         },
                         position: "absolute",
-                        zIndex: 3,
+                        zIndex: 5,
                       }}
                     />
-                    <Typography
-                      fontSize={{
-                        xs: "10px",
-                        sm: "11px",
-                        md: "12px",
-                        lg: "14px",
-                      }}
-                      sx={{
-                        position: "absolute",
-                        zIndex: 4,
-                      }}
-                    >
-                      Goal
-                    </Typography>
+
+                    {showSecondTargetText && (
+                      <Typography
+                        color="white"
+                        fontSize={{
+                          xs: "10px",
+                          sm: "11px",
+                          md: "12px",
+                          lg: "14px",
+                        }}
+                        sx={{
+                          position: "absolute",
+                          zIndex: 6,
+                        }}
+                      >
+                        Goal
+                      </Typography>
+                    )}
                   </>
                 )}
               </Box>
