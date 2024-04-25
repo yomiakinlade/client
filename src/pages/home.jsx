@@ -165,7 +165,13 @@ function Home() {
           )}
         </Box>
       </Box>
-      <Button onClick={resetAll} variant="contained">
+      <Button
+        onClick={resetAll}
+        variant="contained"
+        sx={{
+          marginTop: "20px",
+        }}
+      >
         Reset All
       </Button>
     </Box>
